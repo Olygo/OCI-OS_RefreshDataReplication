@@ -126,7 +126,10 @@ else
         echo "                                        - local disk space"
         echo "                                        - real bucket size"
         echo
-        echo " /!\ delete temporary data in: ~/$tmp_dir"
+        echo "= = = = = = = CLEANING LOCAL FILES = = = = = = ="
+        echo
+        rm -rdf ~/$tmp_dir
+        echo " Local files deleted..."
         echo
         exit 1
     else
@@ -152,22 +155,26 @@ else
         echo "                                        - local disk space"
         echo "                                        - real bucket size"
         echo
+        echo " /!\ Local temporary data  kept in: ~/$tmp_dir"
+        echo " /!\ fix the issue, then manually run upload command "
+        echo
+        echo "oci os object bulk-upload -bn BUCKET_NAME --src-dir ~/$tmp_dir -ns NAMESPACE --overwrite --verify-checksum"
+        exit 1
     else
         echo
         #echo $upload_output
         echo
         echo "No upload_failures found, continuing"
+        echo
+        echo "= = = = = = = TOTAL DATA TRANSFERED = = = = = = ="
+        echo
+        du -h -d1 ~/$tmp_dir
+
+        echo
+        echo "= = = = = = = CLEANING LOCAL FILES = = = = = = ="
+        echo
+        rm -rdf ~/$tmp_dir
+        echo " Local files deleted..."
+        echo
     fi
-
-    echo
-    echo "= = = = = = = TOTAL DATA TRANSFERED = = = = = = ="
-    echo
-    du -h -d1 ~/$tmp_dir
-
-    echo
-    echo "= = = = = = = CLEANING LOCAL FILES = = = = = = ="
-    echo
-    rm -rdf ~/$tmp_dir
-    echo " Local files deleted..."
-    echo
 fi
