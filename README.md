@@ -8,7 +8,7 @@ This script runs :
 
 - within Oracle Cloud Infrastructure (OCI) CloudShell
 	- /!\ Disk space is limited to 4GB maximum
-- on compute instance with instance_principal authentication
+- on compute instance with instance_principale authentication
 - on compute instance with config_file authentication
 
 ## Table of Contents
@@ -20,7 +20,6 @@ This script runs :
 - [Disclaimer](#disclaimer)
 - [Questions](#questions)
 
----
 
 ## Introduction
 
